@@ -1,4 +1,4 @@
-package at.gerhofer.day1
+package at.gerhofer
 
 import io.kotlintest.shouldBe
 import io.kotlintest.specs.FunSpec

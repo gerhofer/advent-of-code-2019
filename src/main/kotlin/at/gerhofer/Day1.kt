@@ -1,4 +1,4 @@
-package at.gerhofer.day1
+package at.gerhofer
 
 object Day1 {
 
