@@ -3,7 +3,7 @@ package at.gerhofer
 import io.kotlintest.shouldBe
 import io.kotlintest.specs.FunSpec
 import java.util.*
-
+/*
 class Day5Test : FunSpec() {
 
     init {
@@ -80,4 +80,4 @@ class Day5Test : FunSpec() {
 
     }
 
-}
+}*/

@@ -1,13 +1,13 @@
 package at.gerhofer
 
-import java.util.*
+import java.util.concurrent.BlockingQueue
 
 const val POSITION_MODE = 0
 const val IMMEDIATE_MODE = 1
 
 object Day5 {
 
-    fun interpretOpCode(values: List<Int>, input: Stack<Int>): List<Int> {
+    fun interpretOpCode(values: List<Int>, input: BlockingQueue<Int>, output: BlockingQueue<Int>): List<Int> {
         val result = values.toMutableList()
         val outputs = mutableListOf<Int>()
         var i = 0
@@ -24,13 +24,14 @@ object Day5 {
                     i += 4
                 }
                 3 -> {
-                    result[result[i + 1]] = input.pop()
+                    result[result[i + 1]] = input.take()
                     i += 2
                 }
                 4 -> {
-                    val output = result[result[i + 1]]
-                    outputs.add(output)
-                    println(output)
+                    val currentOutput = result[result[i + 1]]
+                    output.put(currentOutput)
+                    outputs.add(currentOutput)
+                    println(currentOutput)
                     i += 2
                 }
                 5 -> {
