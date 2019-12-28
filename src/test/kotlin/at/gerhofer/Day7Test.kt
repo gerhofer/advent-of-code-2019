@@ -1,6 +1,5 @@
 package at.gerhofer
 
-import io.kotlintest.matchers.numerics.shouldBeGreaterThan
 import io.kotlintest.shouldBe
 import io.kotlintest.specs.FunSpec
 

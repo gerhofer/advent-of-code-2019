@@ -20,6 +20,19 @@ class Day6Test : FunSpec() {
             println(Day6.countAllEdges(allOrbits))
         }
 
+        test("minimum length to orbit") {
+            val orbits = Day6.parseOrbits("src/test/resources/day6-2.txt")
+            val allOrbits = orbits.map { Day6.flatOrbitList(it) }.flatten()
+            Day6.getPathBetweeenSantaAndYou(allOrbits) shouldBe 4
+        }
+
+        test("test minimum length to orbit for real") {
+            val orbits = Day6.parseOrbits("src/test/resources/day6.txt")
+            val allOrbits = orbits.map { Day6.flatOrbitList(it) }.flatten()
+            println("HEYA REAL RESULT")
+            println(Day6.getPathBetweeenSantaAndYou(allOrbits))
+        }
+
     }
 
 }

@@ -37,7 +37,7 @@ object Day6 {
                             val children = child.objectsInOrbit
                             val realChild = Orbit(child.name, children, parentOrbit)
                             realChild.objectsInOrbit.forEach { it.parent = realChild }
-                           // updateParentOrbit(withoutParent, realChild)
+                            // updateParentOrbit(withoutParent, realChild)
                             parentOrbit.objectsInOrbit.add(realChild)
                         } else {
                             parentOrbit.objectsInOrbit.add(Orbit(names[1], mutableListOf(), parentOrbit))
@@ -94,6 +94,24 @@ object Day6 {
             }
         }
         return count
+    }
+
+    fun getParents(orbit: Orbit): List<Orbit> {
+        var parents = mutableListOf<Orbit>()
+        var mutableOrbit = orbit
+        while (mutableOrbit.parent != null) {
+            parents.add(mutableOrbit.parent!!)
+            mutableOrbit = mutableOrbit.parent!!
+        }
+        return parents
+    }
+
+    fun getPathBetweeenSantaAndYou(orbits: List<Orbit>) : Int {
+        val you = findOrbit(orbits, "YOU")!!
+        val santa = findOrbit(orbits, "SAN")!!
+
+        val path = getParents(you).union(getParents(santa)).subtract(getParents(you).intersect(getParents(santa)))
+        return path.size
     }
 
 }
