@@ -43,7 +43,6 @@ object Day9 {
                     val currentOutput = result[firstParameter(parameterCodes, i, result, relativeMode).toInt()]
                     output.put(currentOutput)
                     outputs.add(currentOutput)
-                    println(currentOutput)
                     i += 2
                 }
                 5 -> {
