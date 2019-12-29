@@ -41,7 +41,7 @@ object Day11 {
 
                     val outputQueue = ArrayBlockingQueue<Long>(1)
                     val inputQueue = ArrayBlockingQueue<Long>(2)
-                    inputQueue.put(Color.BLACK.code)
+                    inputQueue.put(Color.WHITE.code)
                     val thread = thread {
                         Day9.interpretOpCode(intcode.toList(), inputQueue, outputQueue)
                     }
@@ -65,6 +65,26 @@ object Day11 {
 
                 }
         return paintingArea.toMap()
+    }
+
+    fun printIt(paintedField: Map<Point, PaintCell>) {
+        var minX = paintedField.filter { it.value.color == Color.WHITE }.keys.map { it.x }.min()!!
+        var minY = paintedField.filter { it.value.color == Color.WHITE }.keys.map { it.y }.min()!!
+        var maxX = paintedField.filter { it.value.color == Color.WHITE }.keys.map { it.x }.max()!!
+        var maxY = paintedField.filter { it.value.color == Color.WHITE }.keys.map { it.y }.max()!!
+
+        for (x in minX..maxX) {
+            for (y in minY..maxY) {
+                val cell = paintedField.getOrDefault(Point(x, y), PaintCell(Color.BLACK))
+                if (cell.color == Color.BLACK) {
+                    print(" ")
+                } else {
+                    print("*")
+                }
+            }
+            println()
+        }
+
     }
 
     fun turn(direction: Direction, code: Long): Direction {
